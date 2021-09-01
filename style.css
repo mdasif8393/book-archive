@@ -1,0 +1,9 @@
+body{
+    background-color: rgb(255, 255, 255);
+}
+
+#books-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+}
