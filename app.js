@@ -28,6 +28,7 @@ const showBooks = (books) => {
     booksContainer.innerText = ''; //empty previous search result
 
     books.docs.forEach(book => {
+      console.log(book);
         const booksContainer = document.getElementById("books-container");
 
         const bookDiv = document.createElement("div");
@@ -39,7 +40,8 @@ const showBooks = (books) => {
           <div class="card-body">
             <h5 class="card-title">Book Name: <span class="text-secondary">${book.title}</span></h5>
             <h6>Author: <span class="text-secondary">${book.author_name[0]}</span></h6>
-            <h6>First Publish: <span class="text-secondary">${book.first_publish_year}</span></h6>            
+            <h6>First Publish: <span class="text-secondary">${book.first_publish_year}</span></h6>
+            <h6>Language: <span class="text-secondary">${book.language}</span></h6>            
           </div>
         </div>
         `
