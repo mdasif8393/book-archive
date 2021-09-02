@@ -1,35 +1,58 @@
-//Handle APi book search
-const handleApi = () => {
-    const bookName = document.getElementById("search-input").value;
+// Handle search value
+const handleSearch = () => {
 
-    fetch(`http://openlibrary.org/search.json?q=${bookName}`)
+  const bookName = document.getElementById('search-input').value;
+
+  document.getElementById('search-input').value = '';
+
+  searchBooks(bookName);
+}
+
+//Handle APi book search
+const searchBooks = (bookName) => {
+
+    fetch(`https://openlibrary.org/search.json?q=${bookName}`)
     .then( res => res.json() )
-    .then( data => showBooks(data.docs) )
+    .then( data => showBooks(data) )
+
+    .catch(error => handleError(error));
 }
 
 //Handle Books and show books
-
 const showBooks = (books) => {
 
-    books.forEach(book => {
-        console.log(book.author_name[0]);
+  document.getElementById('total-result').innerText = `Total ${books.numFound} search results found`; //Total books result count
+
+  const booksContainer = document.getElementById('books-container');
+
+    booksContainer.innerText = ''; //empty previous search result
+
+    books.docs.forEach(book => {
         const booksContainer = document.getElementById("books-container");
 
         const bookDiv = document.createElement("div");
 
         bookDiv.innerHTML = 
         `
-        <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title text-primary">Book Name: ${book.title}</h5>
-    <h6>Author: ${book.author_name[0]}</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
+        <div class="card card-style" style="width: 18rem;">
+          <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Book Name: <span class="text-secondary">${book.title}</span></h5>
+            <h6>Author: <span class="text-secondary">${book.author_name[0]}</span></h6>
+            <h6>First Publish: <span class="text-secondary">${book.first_publish_year}</span></h6>            
+          </div>
+        </div>
         `
-
         booksContainer.appendChild(bookDiv);
     } )
+    
 }
+
+const handleError = (error) => { //Handle api error
+  document.getElementById('error-message').innerText = 
+  `
+  ${error}
+  `
+  ;
+}
+

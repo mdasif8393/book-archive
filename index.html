@@ -11,22 +11,37 @@
     <link rel="stylesheet" href="style.css">
     <title>Book Archive API</title>
 </head>
+
 <body>
+    
     <main class="container">
+        <!-- Search Container -->
         <section class="m-5">
             <input id="search-input" class="form-control d-inline w-75 bg-light" placeholder="search book" type="text">
 
-            <button onClick="handleApi()" class="btn btn-warning">Search Book</button>
+            <button onClick="handleSearch()" class="btn btn-warning">Search Book</button>
         </section>
 
+        <!-- Books ShowCase Container -->
         <section>
-            <div id="books-container">
+            <div  id="books-container">
 
             </div>
         </section>
+
+        <!-- Total search result container -->
+        <section>
+            <h2 id="total-result" class="text-center text-primary m-4">
+            </h2>
+        </section>
+
+        <!-- Api Catch Error -->
+        <h1 class="text-danger text-center" id="error-message"></h1>
+        
         
     </main>
 
+    <!-- Js link -->
     <script src="app.js">
 
     </script>

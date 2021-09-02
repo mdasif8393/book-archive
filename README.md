@@ -5,9 +5,9 @@ Please Click this link to create your assignment private repo: https://classroom
 
 API Links
 Book Search
-URL Format: http://openlibrary.org/search.json?q=${searchText}
+URL Format: https://openlibrary.org/search.json?q=${searchText}
 
-Example: http://openlibrary.org/search.json?q=javascript
+Example: https://openlibrary.org/search.json?q=javascript
 
 Book cover image url: Large
 URL Format: https://covers.openlibrary.org/b/id/{cover_i}-L.jpg

@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(255, 255, 255);
+    background-color: #e5e5e5;
 }
 
 #books-container{
@@ -7,3 +7,27 @@ body{
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 2rem;
 }
+
+.card-style{
+    box-shadow: 10px 10px 10px lightgrey;
+}
+
+.card-style img{
+    height: 300px;
+}
+
+@media only screen and  (max-width: 1000px) {
+    #books-container{
+        grid-template-columns: repeat(2, 1fr);
+    }}
+
+@media only screen and  ( max-width: 700px) {
+    #books-container{
+        grid-template-columns: repeat(1, 1fr);
+        margin-left: 20%;
+    }}
+
+    
+
+
+    
